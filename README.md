@@ -22,26 +22,6 @@ A redis cluster environment is built based on docker compose.
 chmod a+x redis-cluster-config.sh
 ./redis-cluster-config.sh
 ```
-会根据redis-cluster.tmpl模板重新生成cluster文件[7001\7002...]
+会根据redis-cluster.tmpl模板重新生成cluster文件[7001\7002...]。
 
-- 3、启动docker
-```shell script
-docker-compose up 
-```
-
-- 4、集群配置
- cluster 集群配置
-```
-sh build-cluster.sh
-```
-
-或者
-
-```
-docker exec -it redis7001 redis-cli -p 7001 --cluster create 192.168.20.249:7001 192.168.20.249:7002 192.168.20.249:7003 192.168.20.249:7004 192.168.20.249:7005 192.168.20.249:7006 --cluster-replicas 1
-```
-
-
-
-## 其他
-项目中的ip均为 `192.168.20.249`，按需调整为需要的地址。
+后面会自动话启动创建redis集群节点。
