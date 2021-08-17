@@ -24,4 +24,4 @@ chmod a+x redis-cluster-config.sh
 ```
 会根据redis-cluster.tmpl模板重新生成cluster文件[7001\7002...]。
 
-后面会自动话启动创建redis集群节点。
+后面会自动启动创建redis集群节点。
