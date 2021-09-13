@@ -1,10 +1,14 @@
 #!/bin/sh
-set -x
 
 HERE=$(cd $(dirname "$0"); pwd)
 source "$HERE/common.sh"
 DATA_SOURCE="$HERE/data"
 LIB_SOURCE="$HERE/lib"
+
+echo "\033[036m --清理工作 \033[0m"
+for port in `seq 7001 7006`; do \
+  rm -rf $DATA_SOURCE/${port}; \
+done
 
 local_ip=""
 getIpAddr
@@ -24,12 +28,12 @@ done
 echo "\033[036m --分片前的清理工作 \033[0m"
 sudo docker-compose stop
 
-for port in `seq 7001 7006`; do \
-  rm -rf $DATA_SOURCE/${port}/data/appendonly.aof; \
-  rm -rf $DATA_SOURCE/${port}/data/nodes.conf; \
-  rm -rf $DATA_SOURCE/${port}/data/redis.log; \
-  rm -rf $DATA_SOURCE/${port}/data/dump.rdb; \
-done
+# for port in `seq 7001 7006`; do \
+#   rm -rf $DATA_SOURCE/${port}/data/appendonly.aof; \
+#   rm -rf $DATA_SOURCE/${port}/data/nodes.conf; \
+#   rm -rf $DATA_SOURCE/${port}/data/redis.log; \
+#   rm -rf $DATA_SOURCE/${port}/data/dump.rdb; \
+# done
 
 echo "\033[036m -->开始启动docker \033[0m"
 sudo docker-compose up -d
