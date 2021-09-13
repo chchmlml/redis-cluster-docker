@@ -16,6 +16,7 @@ for port in `seq 7001 7006`; do \
   && mkdir -p ./${port}/conf \
   && envsubst < ./redis-cluster.tmpl > ./${port}/conf/redis.conf \
   && mkdir -p ./${port}/data \
+  && cp ./lib/.gitignore ./${port}/conf/.gitignore \
   && cp ./lib/.gitignore ./${port}/data/.gitignore ;\
 done
 

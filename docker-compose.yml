@@ -116,5 +116,4 @@ services:
         max-file: '10'
         
 networks:
-  app_net:
-    external: true
+  default:
