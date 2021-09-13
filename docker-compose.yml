@@ -7,8 +7,8 @@ services:
     command:
       ["redis-server", "/usr/local/etc/redis/redis.conf"]
     volumes:
-      - ./7001/conf/redis.conf:/usr/local/etc/redis/redis.conf
-      - ./7001/data:/data
+      - ./data/7001/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/7001/data:/data
     ports:
       - "7001:7001"
       - "17001:17001"
@@ -26,8 +26,8 @@ services:
     command:
       ["redis-server", "/usr/local/etc/redis/redis.conf"]
     volumes:
-      - ./7002/conf/redis.conf:/usr/local/etc/redis/redis.conf
-      - ./7002/data:/data
+      - ./data/7002/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/7002/data:/data
     ports:
       - "7002:7002"
       - "17002:17002"
@@ -45,8 +45,8 @@ services:
     command:
       ["redis-server", "/usr/local/etc/redis/redis.conf"]
     volumes:
-      - ./7003/conf/redis.conf:/usr/local/etc/redis/redis.conf
-      - ./7003/data:/data
+      - ./data/7003/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/7003/data:/data
     ports:
       - "7003:7003"
       - "17003:17003"
@@ -64,8 +64,8 @@ services:
     command:
       ["redis-server", "/usr/local/etc/redis/redis.conf"]
     volumes:
-      - ./7004/conf/redis.conf:/usr/local/etc/redis/redis.conf
-      - ./7004/data:/data
+      - ./data/7004/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/7004/data:/data
     ports:
       - "7004:7004"
       - "17004:17004"
@@ -83,8 +83,8 @@ services:
     command:
       ["redis-server", "/usr/local/etc/redis/redis.conf"]
     volumes:
-      - ./7005/conf/redis.conf:/usr/local/etc/redis/redis.conf
-      - ./7005/data:/data
+      - ./data/7005/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/7005/data:/data
     ports:
       - "7005:7005"
       - "17005:17005"
@@ -102,8 +102,8 @@ services:
     command:
       ["redis-server", "/usr/local/etc/redis/redis.conf"]
     volumes:
-      - ./7006/conf/redis.conf:/usr/local/etc/redis/redis.conf
-      - ./7006/data:/data
+      - ./data/7006/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data/7006/data:/data
     ports:
       - "7006:7006"
       - "17006:17006"

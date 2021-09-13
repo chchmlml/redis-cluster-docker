@@ -1,8 +1,10 @@
 #!/bin/sh
+set -x
 
 HERE=$(cd $(dirname "$0"); pwd)
-
 source "$HERE/common.sh"
+DATA_SOURCE="$HERE/data"
+LIB_SOURCE="$HERE/lib"
 
 local_ip=""
 getIpAddr
@@ -13,21 +15,20 @@ export LOCAL_IP=${local_ip}
 echo "\033[036m -->开始创建目录 \033[0m"
 for port in `seq 7001 7006`; do \
   export PORT=${port} \
-  && mkdir -p ./${port}/conf \
-  && envsubst < ./redis-cluster.tmpl > ./${port}/conf/redis.conf \
-  && mkdir -p ./${port}/data \
-  && cp ./lib/.gitignore ./${port}/conf/.gitignore \
-  && cp ./lib/.gitignore ./${port}/data/.gitignore ;\
+  && mkdir -p $DATA_SOURCE/${port}/conf \
+  && touch $DATA_SOURCE/${port}/conf/redis.conf \
+  && envsubst < $LIB_SOURCE/redis-cluster.tmpl > $DATA_SOURCE/${port}/conf/redis.conf \
+  && mkdir -p $DATA_SOURCE/${port}/data ;\
 done
 
 echo "\033[036m --分片前的清理工作 \033[0m"
 sudo docker-compose stop
 
 for port in `seq 7001 7006`; do \
-  rm -rf ./${port}/data/appendonly.aof; \
-  rm -rf ./${port}/data/nodes.conf; \
-  rm -rf ./${port}/data/redis.log; \
-  rm -rf ./${port}/data/dump.rdb; \
+  rm -rf $DATA_SOURCE/${port}/data/appendonly.aof; \
+  rm -rf $DATA_SOURCE/${port}/data/nodes.conf; \
+  rm -rf $DATA_SOURCE/${port}/data/redis.log; \
+  rm -rf $DATA_SOURCE/${port}/data/dump.rdb; \
 done
 
 echo "\033[036m -->开始启动docker \033[0m"
